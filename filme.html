@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="filme-titulo">Detalhes do Filme - Netflix Clone</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.3.1/dist/pouchdb.min.js"></script>
+</head>
+<body>
+  <header class="main-header"> <div class="logo">
+      <a href="index.html">NETFLIX</a>
+    </div>
+    <div class="user-actions">
+      <a href="login.html" onclick="logout(event)" class="btn-logout">Sair</a>
+    </div>
+  </header>
+
+  <main class="filme-detalhes-main">
+    <div class="detalhes-filme-container"> <h1 id="titulo">Carregando Filme...</h1>
+      <iframe id="trailer" width="800" height="450" frameborder="0" allowfullscreen></iframe>
+      <p id="descricao"></p>
+      <span class="filme-categoria" id="categoria"></span>
+      <button onclick="window.history.back()" class="btn-voltar">Voltar</button>
+    </div>
+  </main>
+
+  <script src="./js/db.js"></script>
+  <script src="./js/filme.js"></script>
+  <script src="./js/auth_check.js"></script>
+</body>
+</html>

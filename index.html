@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreamFlix</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.3.1/dist/pouchdb.min.js"></script>
+</head>
+<body>
+  <header class="main-header"> <div class="logo">
+      <a href="index.html">STREAMFLIX</a> </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#" onclick="filtrarCategoria('Ação')">Ação</a></li>
+        <li><a href="#" onclick="filtrarCategoria('Comédia')">Comédia</a></li>
+        <li><a href="#" onclick="filtrarCategoria('Drama')">Drama</a></li>
+        <li><a href="#" onclick="filtrarCategoria('Terror')">Terror</a></li>
+        <li><a href="#" onclick="filtrarCategoria('Ficção Científica')">Ficção</a></li>
+        <li><a href="#" onclick="filtrarCategoria('Animação')">Animação</a></li>
+      </ul>
+    </nav>
+    <div class="user-actions"> 
+      <a href="login.html" onclick="logout(event)" class="btn-logout">Sair</a>
+    </div>
+  </header>
+
+  <main class="home-main">
+    <section id="destaque" class="carrossel"></section>
+    <section id="filmes" class="grid-filmes"></section>
+  </main>
+
+  <script src="./js/db.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/auth_check.js"></script>
+</body>
+</html>

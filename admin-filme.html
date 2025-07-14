@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrar Filmes - StreamFlix</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.3.1/dist/pouchdb.min.js"></script>
+</head>
+<body>
+  <header class="main-header"> <div class="logo">
+      <a href="index.html">STREAMFLIX ADMIN</a>
+    </div>
+    <div class="user-actions">
+      <a href="admin-usuarios.html" class="btn-admin">Gerenciar Usuários</a>
+      <a href="login.html" onclick="logout(event)" class="btn-logout">Sair</a>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-container">
+      <h2>Cadastrar/Editar Filme</h2>
+      <form id="formFilme" onsubmit="salvarFilme(event)">
+        <input type="hidden" id="filmeId">
+        <input type="hidden" id="filmeRev">
+
+        <input type="text" id="titulo" placeholder="Título" required>
+        <textarea id="descricao" placeholder="Descrição" required></textarea>
+        <select id="categoria" required>
+          <option value="">Selecione a Categoria</option>
+          <option value="Ação">Ação</option>
+          <option value="Comédia">Comédia</option>
+          <option value="Drama">Drama</option>
+          <option value="Terror">Terror</option>
+          <option value="Ficção Científica">Ficção Científica</option>
+          <option value="Animação">Animação</option>
+        </select>
+        <input type="url" id="trailer" placeholder="URL do Trailer (YouTube embed)" required>
+        <input type="url" id="imagem" placeholder="URL da Imagem de Capa" required>
+        <button type="submit">Salvar Filme</button>
+        <button type="button" onclick="limparFormulario()">Novo Filme</button>
+      </form>
+
+      <hr>
+
+      <h3>Filmes Cadastrados</h3>
+      <div id="lista-filmes" class="lista-admin">
+        </div>
+    </div>
+  </main>
+
+  <script src="./js/db.js"></script>
+  <script src="./js/admin-filme.js"></script>
+  <script src="./js/auth_check.js"></script>
+</body>
+</html>

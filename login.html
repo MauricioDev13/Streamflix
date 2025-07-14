@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - StreamFlix</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.3.1/dist/pouchdb.min.js"></script>
+</head>
+<body class="login-page">
+  <div class="login-container">
+    <div class="logo">STREAMFLIX</div> <h2>Login</h2>
+    <form onsubmit="realizarLogin(event)">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="senha" placeholder="Senha" required>
+      <button type="submit">Entrar</button>
+    </form>
+    <p id="mensagem-erro"></p>
+  </div>
+
+  <script src="./js/db.js"></script>
+  <script src="./js/login.js"></script>
+</body>
+</html>
