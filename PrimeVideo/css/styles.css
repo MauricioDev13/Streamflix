@@ -1,0 +1,723 @@
+/* styles.css - Design estilo Netflix */
+
+:root {
+  --netflix-red: #E50914; /* Vermelho principal da Netflix */
+  --netflix-dark: #141414; /* Fundo escuro padrão */
+  --text-light: #e5e5e5; /* Cor do texto claro */
+  --text-muted: #a0a0a0; /* Cor do texto mais suave */
+  --button-hover-red: #f40612; /* Vermelho para hover de botões */
+  --overlay-dark: rgba(0, 0, 0, 0.7); /* Para sobreposições */
+  --translucent-grey: rgba(109, 109, 110, 0.7); /* Cinza translúcido para botões */
+  --translucent-grey-hover: rgba(109, 109, 110, 0.5); /* Cinza translúcido para hover */
+}
+
+body {
+  background-color: var(--netflix-dark);
+  color: var(--text-light);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Base para links e botões */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+/* Cabeçalho principal (navbar) */
+.main-header { /* Usando main-header conforme HTMLs corrigidos */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: var(--netflix-dark);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra sutil */
+}
+
+.logo a {
+  color: var(--netflix-red); /* Vermelho Netflix para o logo */
+  font-size: 2.2em; /* Um pouco maior */
+  font-weight: bold;
+  letter-spacing: -1px;
+  transition: color 0.3s ease;
+}
+
+.logo a:hover {
+  color: var(--button-hover-red);
+}
+
+/* Navegação principal */
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-nav ul li {
+  margin-right: 25px; /* Mais espaçamento */
+}
+
+.main-nav ul li a {
+  color: var(--text-light);
+  font-size: 1em; 
+  transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+  color: #fff;
+  font-weight: bold; 
+}
+
+/* Ações do usuário (botões Sair, Gerenciar) */
+.user-actions {
+  display: flex;
+  gap: 15px; 
+  align-items: center;
+}
+
+.user-actions .btn-admin,
+.user-actions .btn-logout {
+  background-color: var(--netflix-red); 
+  color: #fff;
+  padding: 10px 20px; 
+  border-radius: 4px; 
+  font-size: 0.95em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.user-actions .btn-logout:hover,
+.user-actions .btn-admin:hover {
+  background-color: var(--button-hover-red);
+  transform: translateY(-2px); 
+}
+
+/* MAIN CONTENT - Todas as telas devem ter padding-top para o cabeçalho fixo */
+main {
+  padding-top: 80px; 
+}
+
+/* HOME PAGE - Index.html */
+
+.carrossel { 
+  position: relative;
+  width: 100%;
+  height: 600px;
+
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  margin-bottom: 50px; 
+}
+
+
+.filme-destaque-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.filme-destaque-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  z-index: 1;
+}
+
+.filme-destaque-item .info-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Aumenta a intensidade do degradê para mais contraste no texto */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.2) 100%); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 50px;
+  z-index: 2;
+  box-sizing: border-box; 
+}
+
+.filme-destaque-item .info-overlay h3 {
+  font-size: 4.5em; 
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 4px 4px 8px rgba(0,0,0,0.9); 
+  max-width: 65%; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+}
+
+.filme-destaque-item .info-overlay p {
+  font-size: 1.4em; /* Descrição um pouco maior */
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: var(--text-light);
+  max-width: 55%; /* Aumenta a largura da descrição */
+}
+
+.filme-destaque-item .info-overlay .categoria-tag {
+  background-color: var(--netflix-red);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* Adicione ou garanta que estas regras existam para os botões do destaque */
+.filme-destaque-item .info-overlay .btn-play,
+.filme-destaque-item .info-overlay .btn-info {
+  background-color: #fff;
+  color: var(--netflix-dark);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.filme-destaque-item .info-overlay .btn-play:hover {
+  background-color: rgba(255,255,255,0.8);
+  transform: translateY(-2px);
+}
+
+.filme-destaque-item .info-overlay .btn-info {
+  background-color: var(--translucent-grey); /* Cinza translúcido */
+  color: #fff;
+}
+
+.filme-destaque-item .info-overlay .btn-info:hover {
+  background-color: var(--translucent-grey-hover);
+  transform: translateY(-2px);
+}
+
+
+/* Grid de filmes e linhas de filmes */
+.movie-row { /* Se quiser ter "linhas" de filmes fora do grid */
+  margin-bottom: 40px;
+  padding: 0 50px;
+}
+
+.movie-row h2 {
+  font-size: 1.8em;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+.grid-filmes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsivo */
+  gap: 15px; /* Espaçamento entre os filmes */
+  padding: 0 50px 50px; /* Padding inferior para não colar */
+}
+
+/* Card de filme individual */
+.filme-card {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer; /* Indica que é clicável */
+  display: flex; /* Para organizar imagem e info em coluna */
+  flex-direction: column; /* Para organizar imagem e info em coluna */
+  height: auto; /* Ajusta a altura automaticamente */
+}
+
+.filme-card:hover {
+  transform: translateY(-5px);
+}
+
+.filme-card img {
+  width: 100%;
+  height: 250px; /* Altura fixa para a imagem, ajuste se necessário */
+  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+}
+
+.filme-card .filme-info {
+  padding: 15px;
+  text-align: center; /* Centraliza o texto */
+  flex-grow: 1; /* Permite que o info-overlay ocupe o espaço restante */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Para empurrar o span para baixo se houver mais conteúdo */
+}
+
+.filme-card .filme-info h4 {
+  font-size: 1.2em;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #fff;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.filme-card .filme-info p {
+  font-size: 0.9em;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  display: -webkit-box; 
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filme-card .filme-info span {
+  font-size: 0.8em;
+  color: var(--primary-color); /* Cor da categoria */
+  font-weight: bold;
+  margin-top: auto; /* Empurra a categoria para o final do card-info */
+}
+
+
+.filme-card .filme-info .filme-categoria {
+  background-color: var(--netflix-red);
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+/* PAGE DETAILS - filme.html */
+
+.filme-detalhes-main {
+  padding-top: 80px; /* Espaço para o cabeçalho fixo */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 80px);
+  padding-bottom: 50px; /* Padding no final da página */
+}
+
+.detalhes-filme-container { /* Classe já definida no CSS, apenas reforçando */
+  background-color: #1a1a1a;
+  padding: 40px;
+  border-radius: 8px; /* Cantos mais suaves */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* Sombra mais proeminente */
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.detalhes-filme-container h1 {
+  font-size: 3em; /* Título maior */
+  margin-bottom: 25px; /* Mais espaço */
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.detalhes-filme-container iframe {
+  width: 100%;
+  height: 500px; /* Altura do iframe um pouco maior */
+  border-radius: 8px;
+  margin-bottom: 30px; /* Mais espaço */
+  background-color: #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Sombra no vídeo */
+}
+
+.detalhes-filme-container p {
+  font-size: 1.2em; /* Texto um pouco maior */
+  line-height: 1.8; /* Mais espaçamento entre linhas */
+  margin-bottom: 25px;
+  color: var(--text-light);
+}
+
+.filme-categoria { /* Já definida, mas ajustando para consistência */
+  background-color: var(--netflix-red);
+  color: #fff;
+  padding: 8px 15px; /* Mais padding */
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.btn-voltar {
+  background-color: var(--translucent-grey); /* Cinza translúcido */
+  color: #fff;
+  padding: 12px 30px; /* Um pouco mais de padding */
+  border-radius: 5px;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+}
+
+.btn-voltar:hover {
+  background-color: var(--translucent-grey-hover);
+  transform: translateY(-2px);
+}
+
+/* LOGIN PAGE - login.html */
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%), 
+                      url('https://assets.nflxext.com/ffe/siteui/vlv3/d1532433-07d3-4ae1-a96b-8c87ddcbb76f/2561979b-252a-4a27-ab3d-b28669c5950d/BR-pt-20231120-popsignuptwoweeks-perspective_alpha_website_small.jpg'); /* Imagem de fundo Netflix */
+  background-size: cover;
+  background-position: center;
+}
+
+.login-container {
+  background-color: rgba(0, 0, 0, 0.75); /* Fundo semi-transparente */
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Sombra forte para destacar */
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.login-container .logo {
+  color: var(--netflix-red);
+  font-size: 2.5em; /* Logo maior no login */
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.login-container h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaço entre os inputs */
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 4px; /* Cantos arredondados */
+  font-size: 1.1em;
+  outline: none; /* Remove a borda azul ao focar */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container input[type="email"]::placeholder,
+.login-container input[type="password"]::placeholder {
+  color: var(--text-muted);
+}
+
+.login-container input[type="email"]:focus,
+.login-container input[type="password"]:focus {
+  background-color: #444;
+  box-shadow: 0 0 0 2px var(--netflix-red); /* Borda vermelha ao focar */
+}
+
+.login-container button[type="submit"] {
+  background-color: var(--netflix-red);
+  color: #fff;
+  padding: 15px;
+  border-radius: 4px;
+  font-size: 1.2em;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-container button[type="submit"]:hover {
+  background-color: var(--button-hover-red);
+  transform: translateY(-2px);
+}
+
+#mensagem-erro {
+  color: var(--netflix-red);
+  margin-top: 15px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* ADMIN PAGES - admin-filme.html & admin-usuarios.html */
+
+.admin-main {
+  padding-top: 80px;
+  padding-bottom: 50px;
+}
+
+.admin-container {
+  background-color: #1a1a1a;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  max-width: 900px;
+  margin: 30px auto; /* Centraliza e adiciona margem */
+  box-sizing: border-box;
+}
+
+.admin-container h2, .admin-container h3 {
+  color: #fff;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 2em;
+}
+
+.admin-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espaço entre os campos */
+  margin-bottom: 30px;
+}
+
+.admin-container input[type="text"],
+.admin-container input[type="email"],
+.admin-container input[type="password"],
+.admin-container input[type="url"],
+.admin-container textarea,
+.admin-container select {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #444; /* Borda sutil */
+  padding: 12px 15px;
+  border-radius: 4px;
+  font-size: 1em;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-container input:focus,
+.admin-container textarea:focus,
+.admin-container select:focus {
+  border-color: var(--netflix-red);
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.5); /* Sombra vermelha ao focar */
+}
+
+.admin-container textarea {
+  min-height: 100px;
+  resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.admin-container button {
+  background-color: var(--netflix-red);
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 4px;
+  font-size: 1.05em;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.admin-container button:hover {
+  background-color: var(--button-hover-red);
+  transform: translateY(-2px);
+}
+
+.admin-container hr {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 30px 0;
+}
+
+/* Listas de Administração (Filmes e Usuários) */
+.lista-admin {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.item-admin, .usuario-item { /* Estilo para filmes e usuários na lista */
+  background-color: #222;
+  padding: 15px 20px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.item-admin .admin-capa {
+  width: 60px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 3px;
+  flex-shrink: 0; /* Evita que a imagem encolha */
+}
+
+.item-admin .item-info, .usuario-item strong {
+  flex-grow: 1; /* Ocupa o espaço disponível */
+  color: var(--text-light);
+}
+
+.item-admin .item-info p {
+  color: var(--text-muted);
+  font-size: 0.9em;
+  margin: 5px 0 0 0;
+}
+
+.item-admin .item-actions, .usuario-item button {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0; /* Evita que os botões encolham */
+}
+
+.item-admin .btn-editar {
+  background-color: #007bff; /* Azul padrão */
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  transition: background-color 0.3s ease;
+}
+
+.item-admin .btn-editar:hover {
+  background-color: #0056b3;
+}
+
+.item-admin .btn-excluir, .usuario-item button {
+  background-color: var(--netflix-red);
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  transition: background-color 0.3s ease;
+}
+
+.item-admin .btn-excluir:hover, .usuario-item button:hover {
+  background-color: var(--button-hover-red);
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 15px 20px;
+  }
+
+  .main-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .main-nav ul li {
+    margin: 5px 10px;
+  }
+
+  .user-actions {
+    gap: 10px;
+  }
+
+  .carrossel, .grid-filmes, .movie-row {
+    padding: 0 20px;
+  }
+
+  .filme-destaque-item .info-overlay h3 {
+    font-size: 2.5em;
+  }
+
+  .filme-destaque-item .info-overlay p {
+    font-size: 1em;
+  }
+
+  .login-container, .admin-container, .detalhes-filme-container {
+    padding: 30px;
+    margin: 20px;
+  }
+
+  .detalhes-filme-container h1 {
+    font-size: 2em;
+  }
+
+  .detalhes-filme-container iframe {
+    height: 300px;
+  }
+
+  .grid-filmes {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .main-nav {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .user-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero {
+    height: 400px;
+  }
+
+  .filme-destaque-item .info-overlay h3 {
+    font-size: 2em;
+    max-width: 100%;
+  }
+
+  .filme-destaque-item .info-overlay p {
+    display: none; /* Esconde a descrição em telas muito pequenas */
+  }
+
+  .detalhes-filme-container h1 {
+    font-size: 1.8em;
+  }
+  .detalhes-filme-container iframe {
+    height: 250px;
+  }
+  
+  .item-admin, .usuario-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .item-admin .item-actions, .usuario-item button {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
